@@ -1,13 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+:root {
+    --primary-color: #05445E;
+    --second-color: #189AB4;
+    --third-color: #75E6DA;
+    --fourth-color: #D4F1F4;
+}
+
+body {
+    background-color: var(--fourth-color);
+    font-family: 'Bebas Neue', cursive;
+    margin-top: 5rem;
+}
+
+.greetingContainer {
+    display: flex;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+form input {
+    height: 2.5rem;
+    width: 15rem;
+}
+
+form > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div > button {
+    height: 5rem;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.2rem;
+    background-color: transparent;
+    border-radius: 5px;
+    margin-top: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
 .upperText {
     font-size: 5rem;
     text-align: center;
 }
 
 .gameboard {
+    background-color: var(--third-color);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    border: 1px solid black;
     height: 30rem;
     width: 40rem;
 }
@@ -18,4 +72,16 @@
     align-items: center;
     font-size: 6rem;
     border: 1px solid black;
+}
+
+.hide {
+    display: none;
+    background-color: black;    
+}
+
+.container button {
+    margin-left: 35.7rem;
+    margin-top: -1rem;
+    font-size: 1.3rem;
+    height:auto;
 }

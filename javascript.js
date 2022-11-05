@@ -1,10 +1,28 @@
 const boardDiv = document.querySelector('.gameboard');
+const header = document.querySelector('.upperText');
+const nickname1 = document.querySelector('#nickname1');
+const nickname2 = document.querySelector('#nickname2');
+const startButton = document.querySelector('#startButton');
+const greetingContainer = document.querySelector('.greetingContainer');
+const container = document.querySelector('.container');
 
 const gameboard = (() => {
     let player1Turn = true;
     let mark;
 
+    startButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        displayTurn();
+        greetingContainer.classList.toggle('hide');
+        container.classList.toggle('hide');
+    })
+
     const board = ["-", "-", "-", "-", "-", "-", "-", "-", "-"];
+
+    const displayTurn = () => {
+        if (player1Turn == true) {header.textContent = (`${nickname1.value}'s turn`)}
+        else {header.textContent = (`${nickname2.value}'s turn`)}
+    }
 
     const checkWin = (mark) => {
         console.log("checkwin");
@@ -87,6 +105,7 @@ const gameboard = (() => {
 
             checkWin(mark);
             decideTurn();
+            displayTurn();
             console.log(board);
             console.log(mark);
             console.log(player1Turn)

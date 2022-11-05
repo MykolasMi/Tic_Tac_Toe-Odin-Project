@@ -8,9 +8,24 @@
     <title>Tic Tac Toe | The Odin Project </title>
 </head>
 <body>
-    <div class="upperText">Player 1's Turn</div>
-    <div class="gameboard">
+    <div class="greetingContainer">
+        <form action="" method="post">
+            <div>
+                <label for="nickname1">Player1 Nickname:</label>
+                <input type="text" name="nickname1" id="nickname1" required>
+            </div>
+            <div>
+                <label for="nickname2">Player2 Nickname:</label>
+                <input type="text" name="nickname2" id="nickname2" required>
+            </div>
 
+            <div><button type="submit" id="startButton">Start Game</button></div> <!--Neina alignint button prie vidurio-->
+        </form>
+    </div>
+    <div class="container hide">
+        <div class="upperText"></div>
+        <div class="gameboard"></div>
+        <button>Restart</button>
     </div>
 
     <script src="javascript.js" defer></script>

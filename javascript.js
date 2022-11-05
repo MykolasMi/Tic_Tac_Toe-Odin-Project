@@ -5,10 +5,13 @@ const nickname2 = document.querySelector('#nickname2');
 const startButton = document.querySelector('#startButton');
 const greetingContainer = document.querySelector('.greetingContainer');
 const container = document.querySelector('.container');
+const restartButton = document.querySelector('.restart');
 
 const gameboard = (() => {
     let player1Turn = true;
     let mark;
+
+    const board = ["-", "-", "-", "-", "-", "-", "-", "-", "-"];
 
     startButton.addEventListener('click', function(e) {
         e.preventDefault();
@@ -17,7 +20,19 @@ const gameboard = (() => {
         container.classList.toggle('hide');
     })
 
-    const board = ["-", "-", "-", "-", "-", "-", "-", "-", "-"];
+    restartButton.addEventListener('click', function(e) {
+        restart();
+    })
+
+    const restart = () => {
+        for (let i=0; i<board.length; i++) {
+            board.splice([i], 1, '-');
+            console.log(board);
+            square.textContent = '-'; //kaip issicallint square is kitos funkcijos?
+        }
+            player1Turn = true;
+            displayTurn();
+    }
 
     const displayTurn = () => {
         if (player1Turn == true) {header.textContent = (`${nickname1.value}'s turn`)}

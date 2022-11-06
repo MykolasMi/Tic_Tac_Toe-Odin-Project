@@ -28,7 +28,8 @@ const gameboard = (() => {
         for (let i=0; i<board.length; i++) {
             board.splice([i], 1, '-');
             console.log(board);
-            square.textContent = '-'; //kaip issicallint square is kitos funkcijos?
+            const squares = document.querySelectorAll('.square')
+            squares[i].textContent = '-'; //kaip issicallint square is kitos funkcijos?
         }
             player1Turn = true;
             displayTurn();
@@ -103,6 +104,7 @@ const gameboard = (() => {
         square.textContent = board[i];
         square.classList.add("square");
         boardDiv.appendChild(square);
+        
         
         square.addEventListener('click', function(e) {
             if (square.textContent=="X" || square.textContent=="O") {

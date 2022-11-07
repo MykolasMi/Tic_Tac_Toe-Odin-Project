@@ -28,7 +28,6 @@ const gameboard = (() => {
     const restart = () => {
         for (let i=0; i<board.length; i++) {
             board.splice([i], 1, '');
-            console.log(board);
             const squares = document.querySelectorAll('.square')
             squares[i].textContent = '';
         }
@@ -42,7 +41,6 @@ const gameboard = (() => {
     }
 
     const checkWin = (mark) => {
-        console.log("checkwin");
         for(let i=0; i<3; i++) {
             //row check
             if(board[i] == board[i+1] && board[i+1] == board[i+2]) {
@@ -138,8 +136,6 @@ const gameboard = (() => {
             decideTurn();
             displayTurn();
         })
-
-        console.log(boardDiv)
         }
     }
 

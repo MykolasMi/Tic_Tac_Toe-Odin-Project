@@ -7,6 +7,7 @@ const greetingContainer = document.querySelector('.greetingContainer');
 const container = document.querySelector('.container');
 const restartButton = document.querySelector('.restart');
 const winContainer = document.querySelector('.winContainer');
+const continueButton = document.querySelector('.continueButton');
 
 const gameboard = (() => {
     let player1Turn = true;
@@ -22,6 +23,12 @@ const gameboard = (() => {
     })
 
     restartButton.addEventListener('click', function(e) {
+        restart();
+    })
+
+    continueButton.addEventListener('click', function() {
+        winContainer.classList.toggle('hide');
+        container.classList.toggle('hide');
         restart();
     })
 
@@ -42,19 +49,6 @@ const gameboard = (() => {
 
     const checkWin = (mark) => {
         for(let i=0; i<3; i++) {
-            //row check
-            if(board[i] == board[i+1] && board[i+1] == board[i+2]) {
-                if(board[i] != '' && board[i+1] != '' && board[i+2] != '') {
-                    if (mark == "X") {
-                        announceWinner(nickname1.value);
-                        break
-                    }
-                    if (mark == "O") {
-                        announceWinner(nickname2.value);
-                        break
-                    }
-                }
-            }
             //column check
             if(board[i] == board[i+3] && board[i+3] == board[i+6]) {
                 if(board[i] != '' && board[i+3] != '' && board[i+6] != '') {
@@ -69,6 +63,39 @@ const gameboard = (() => {
                 }
             }
 
+        }
+        //row check
+        if(board[0] == board[1] && board[1] == board[2]) {
+            if(board[0] != '' && board[1] != '' && board[2] != '') {
+                if (mark == "X") {
+                    announceWinner(nickname1.value);
+                }
+                if (mark == "O") {
+                    announceWinner(nickname2.value);
+                }
+            }
+        }
+        //row check
+        if(board[3] == board[4] && board[4] == board[5]) {
+            if(board[3] != '' && board[4] != '' && board[5] != '') {
+                if (mark == "X") {
+                    announceWinner(nickname1.value);
+                }
+                if (mark == "O") {
+                    announceWinner(nickname2.value);
+                }
+            }
+        }
+        //row check
+        if(board[6] == board[7] && board[7] == board[8]) {
+            if(board[6] != '' && board[7] != '' && board[8] != '') {
+                if (mark == "X") {
+                    announceWinner(nickname1.value);
+                }
+                if (mark == "O") {
+                    announceWinner(nickname2.value);
+                }
+            }
         }
         //diagonal check
         if(board[0] == board[4] && board[4] == board[8]) {
@@ -106,8 +133,9 @@ const gameboard = (() => {
 
     const announceWinner = (winner) => {
         winContainer.classList.toggle('hide');
-        const winText = document.querySelector('winText');
-        winText.textContent = (`${winner} HAS WON THE GAME!`)
+        const winText = document.querySelector('.winText');
+        winText.textContent = (`${winner} HAS WON THE GAME!`);
+        container.classList.toggle('hide');
     }
 
     const display = () => {
@@ -116,7 +144,6 @@ const gameboard = (() => {
         square.textContent = board[i];
         square.classList.add("square");
         boardDiv.appendChild(square);
-        
         
         square.addEventListener('click', function(e) {
             if (square.textContent=="X" || square.textContent=="O") {

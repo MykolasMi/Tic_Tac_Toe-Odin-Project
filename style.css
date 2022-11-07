@@ -74,14 +74,47 @@ div > button {
     border: 1px solid black;
 }
 
-.hide {
-    display: none;
-    background-color: black;    
-}
-
 .container button {
     margin-left: 35.7rem;
     margin-top: -1rem;
     font-size: 1.3rem;
     height:auto;
+}
+
+.winContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.trophy {
+  position: absolute;
+  height: 15rem;
+  width: 15rem;
+  margin-top: -90px;
+} 
+
+.winContainer :first-child {
+    height: 20rem;
+    width: 22rem;
+    opacity: 0.6;
+}
+
+.winContainer :nth-child(3) {
+    font-size: 5rem;
+    font-weight: 550;
+}
+
+.winContainer :nth-child(4) {
+    font-size: 1.5rem;
+    height: 3rem;
+}
+
+.winContainer :nth-child(4):hover {
+    background-color: var(--third-color);
+}
+
+.hide {
+    display: none;
 }

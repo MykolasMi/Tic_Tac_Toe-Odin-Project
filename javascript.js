@@ -47,16 +47,11 @@ const gameboard = (() => {
             //row check
             if(board[i] == board[i+1] && board[i+1] == board[i+2]) {
                 if(board[i] != '' && board[i+1] != '' && board[i+2] != '') {
-                    console.log("EVEN_ROW_TRUE");
                     if (mark == "X") {
-                        //player1.win;
-                        console.log("X WIN")
                         announceWinner(nickname1.value);
                         break
                     }
                     if (mark == "O") {
-                        //player2.win
-                        console.log("O WIN")
                         announceWinner(nickname2.value);
                         break
                     }
@@ -65,16 +60,11 @@ const gameboard = (() => {
             //column check
             if(board[i] == board[i+3] && board[i+3] == board[i+6]) {
                 if(board[i] != '' && board[i+3] != '' && board[i+6] != '') {
-                    console.log("EVEN_COLUMN_TRUE");
                     if (mark == "X") {
-                        //player1.win;
-                        console.log("X WIN")
                         announceWinner(nickname1.value);
                         break
                     }
                     if (mark == "O") {
-                        //player2.win
-                        console.log("O WIN")
                         announceWinner(nickname2.value);
                         break
                     }
@@ -85,30 +75,20 @@ const gameboard = (() => {
         //diagonal check
         if(board[0] == board[4] && board[4] == board[8]) {
             if (board[0] != '' && board[4] != '' && board[8] != '') {
-                console.log("EVEN_LTR_DIAGONAL_TRUE");
                 if (mark == "X") {
-                    //player1.win;
-                    console.log("X WIN")
                     announceWinner(nickname1.value);
                 }
                 if (mark == "O") {
-                    //player2.win
-                    console.log("O WIN")
                     announceWinner(nickname2.value);
                 }
             }
         }
         if(board[2] == board[4] && board[4] == board[8]) {
             if (board[2] != '' && board[4] != '' && board[8] != '') {
-                console.log("EVEN_RTL_DIAGONAL_TRUE");
                 if (mark == "X") {
-                    //player1.win;
-                    console.log("X WIN")
                     announceWinner(nickname1.value);
                 }
                 if (mark == "O") {
-                    //player2.win
-                    console.log("O WIN")
                     announceWinner(nickname2.value);
                 }
             }
@@ -157,9 +137,6 @@ const gameboard = (() => {
             checkWin(mark);
             decideTurn();
             displayTurn();
-            console.log(board);
-            console.log(mark);
-            console.log(player1Turn)
         })
 
         console.log(boardDiv)
@@ -173,13 +150,9 @@ const gameboard = (() => {
         else {
             player1Turn = true;
         }
-
-        console.log("work")
     }
 
     return {board, display}
 })()
 
 gameboard.display();
-
-console.log(gameboard.board);

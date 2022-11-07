@@ -6,12 +6,13 @@ const startButton = document.querySelector('#startButton');
 const greetingContainer = document.querySelector('.greetingContainer');
 const container = document.querySelector('.container');
 const restartButton = document.querySelector('.restart');
+const winContainer = document.querySelector('.winContainer');
 
 const gameboard = (() => {
     let player1Turn = true;
     let mark;
 
-    const board = ["-", "-", "-", "-", "-", "-", "-", "-", "-"];
+    const board = ["", "", "", "", "", "", "", "", ""];
 
     startButton.addEventListener('click', function(e) {
         e.preventDefault();
@@ -26,10 +27,10 @@ const gameboard = (() => {
 
     const restart = () => {
         for (let i=0; i<board.length; i++) {
-            board.splice([i], 1, '-');
+            board.splice([i], 1, '');
             console.log(board);
             const squares = document.querySelectorAll('.square')
-            squares[i].textContent = '-'; //kaip issicallint square is kitos funkcijos?
+            squares[i].textContent = '';
         }
             player1Turn = true;
             displayTurn();
@@ -45,57 +46,90 @@ const gameboard = (() => {
         for(let i=0; i<3; i++) {
             //row check
             if(board[i] == board[i+1] && board[i+1] == board[i+2]) {
-                console.log("EVEN_ROW_TRUE");
-                if (mark == "X") {
-                    //player1.win;
-                    console.log("X WIN")
-                    break
-                }
-                if (mark == "O") {
-                    //player2.win
-                    console.log("O WIN")
-                    break
+                if(board[i] != '' && board[i+1] != '' && board[i+2] != '') {
+                    console.log("EVEN_ROW_TRUE");
+                    if (mark == "X") {
+                        //player1.win;
+                        console.log("X WIN")
+                        announceWinner(nickname1.value);
+                        break
+                    }
+                    if (mark == "O") {
+                        //player2.win
+                        console.log("O WIN")
+                        announceWinner(nickname2.value);
+                        break
+                    }
                 }
             }
             //column check
             if(board[i] == board[i+3] && board[i+3] == board[i+6]) {
-                console.log("EVEN_COLUMN_TRUE");
-                if (mark == "X") {
-                    //player1.win;
-                    console.log("X WIN")
-                    break
-                }
-                if (mark == "O") {
-                    //player2.win
-                    console.log("O WIN")
-                    break
+                if(board[i] != '' && board[i+3] != '' && board[i+6] != '') {
+                    console.log("EVEN_COLUMN_TRUE");
+                    if (mark == "X") {
+                        //player1.win;
+                        console.log("X WIN")
+                        announceWinner(nickname1.value);
+                        break
+                    }
+                    if (mark == "O") {
+                        //player2.win
+                        console.log("O WIN")
+                        announceWinner(nickname2.value);
+                        break
+                    }
                 }
             }
 
         }
         //diagonal check
         if(board[0] == board[4] && board[4] == board[8]) {
-            console.log("EVEN_LTR_DIAGONAL_TRUE");
-            if (mark == "X") {
-                //player1.win;
-                console.log("X WIN")
-            }
-            if (mark == "O") {
-                //player2.win
-                console.log("O WIN")
+            if (board[0] != '' && board[4] != '' && board[8] != '') {
+                console.log("EVEN_LTR_DIAGONAL_TRUE");
+                if (mark == "X") {
+                    //player1.win;
+                    console.log("X WIN")
+                    announceWinner(nickname1.value);
+                }
+                if (mark == "O") {
+                    //player2.win
+                    console.log("O WIN")
+                    announceWinner(nickname2.value);
+                }
             }
         }
         if(board[2] == board[4] && board[4] == board[8]) {
-            console.log("EVEN_RTL_DIAGONAL_TRUE");
-            if (mark == "X") {
-                //player1.win;
-                console.log("X WIN")
-            }
-            if (mark == "O") {
-                //player2.win
-                console.log("O WIN")
+            if (board[2] != '' && board[4] != '' && board[8] != '') {
+                console.log("EVEN_RTL_DIAGONAL_TRUE");
+                if (mark == "X") {
+                    //player1.win;
+                    console.log("X WIN")
+                    announceWinner(nickname1.value);
+                }
+                if (mark == "O") {
+                    //player2.win
+                    console.log("O WIN")
+                    announceWinner(nickname2.value);
+                }
             }
         }
+
+        /*
+        let i=0
+        i++;
+        console.log(i);
+        if (i>8) {
+            console.log(i);
+            console.log('ALL OCCUPIED')
+            //draw
+        } SUTVARKYTI, REIK KAZKOKIO WHILE BBZ
+        */
+    }
+
+    const announceWinner = (winner) => {
+        winContainer.classList.toggle('hide');
+        const winText = document.querySelector('winText');
+        winText.textContent = (`${winner} HAS WON THE GAME!`)
     }
 
     const display = () => {
@@ -146,23 +180,6 @@ const gameboard = (() => {
     return {board, display}
 })()
 
-const player1 = (() => {
-    //win 
-
-
-    /*let player1Turn = true;
-    const place = () => {
-        if (player1Turn == true) {
-            player1Turn = false;
-        }
-        else {
-            player1Turn = true;
-        }
-    }
-    return{place}*/
-})()
-
-
-gameboard.display()
+gameboard.display();
 
 console.log(gameboard.board);
